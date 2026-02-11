@@ -1,1 +1,37 @@
+import pyautogui
+import time
+import webbrowser
 
+pyautogui.PAUSE = 0.6
+
+# Step 1: Open Gmail
+webbrowser.open("https://mail.google.com")
+time.sleep(12)  # give Gmail enough time
+
+# Step 2: Open Compose window
+pyautogui.press('c')
+time.sleep(2)
+
+# Step 3: Enter TO email and CONFIRM it
+pyautogui.write("mpmvimalan@gmail.com", interval=0.05)
+pyautogui.press('enter')   # IMPORTANT
+time.sleep(1)
+
+# Step 4: Move to Subject
+pyautogui.press('tab')
+
+# Step 5: Enter Subject
+pyautogui.write("Automated Mail using PyAutoGUI", interval=0.05)
+pyautogui.press('tab')
+
+# Step 6: Enter Body
+pyautogui.write(
+    "Hello,\n\n"
+    "This email was sent automatically using PyAutoGUI.\n\n"
+    "Regards,\n"
+    "Python Automation Script",
+    interval=0.05
+)
+
+# Step 7: Send Email
+pyautogui.hotkey('ctrl', 'enter')
