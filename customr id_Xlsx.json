@@ -1,0 +1,107 @@
+{
+  "name": "customr id",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -384,
+        0
+      ],
+      "id": "a958edc1-f255-401e-97b9-08e648f93f79",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"customers\": [\n    {\n      \"customerId\": \"CUST-1001\",\n      \"firstName\": \"Kanimozhi\",\n      \"lastName\": \"B\",\n      \"email\": \"kani@gmail.com\",\n      \"ad_spend\": 5000,\n      \"conversions\": 75\n    },\n    {\n      \"customerId\": \"CUST-1002\",\n      \"firstName\": \"Arun\",\n      \"lastName\": \"K\",\n      \"email\": \"arun@gmail.com\",\n      \"ad_spend\": 3000,\n      \"conversions\": 50\n    },\n    {\n      \"customerId\": \"CUST-1003\",\n      \"firstName\": \"Priya\",\n      \"lastName\": \"S\",\n      \"email\": \"priya@gmail.com\",\n      \"ad_spend\": 2000,\n      \"conversions\": 40\n    },\n    {\n      \"customerId\": \"CUST-1004\",\n      \"firstName\": \"Vikram\",\n      \"lastName\": \"R\",\n      \"email\": \"vikram@gmail.com\",\n      \"ad_spend\": 8000,\n      \"conversions\": 120\n    },\n    {\n      \"customerId\": \"CUST-1005\",\n      \"firstName\": \"Sneha\",\n      \"lastName\": \"P\",\n      \"email\": \"sneha@gmail.com\",\n      \"ad_spend\": 1500,\n      \"conversions\": 25\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -176,
+        0
+      ],
+      "id": "5c22276e-3d88-4986-bb93-b94942f24e85",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "xlsx",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        32,
+        0
+      ],
+      "id": "f91466ab-6e98-43fd-b4ff-9de60385f6ff",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "operation": "xlsx",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        0
+      ],
+      "id": "5cf9ae89-244f-45ce-93cf-ba170bcfb686",
+      "name": "Extract from File"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "64fb9adf-e64a-4888-9ec9-b0fe35ee5916",
+  "meta": {
+    "instanceId": "adaeb5f55d206719b5d69914b17b421d28d6701b9ecb37fe366d98f6940490e9"
+  },
+  "id": "1RB6yDbm07Kpdijy",
+  "tags": []
+}
