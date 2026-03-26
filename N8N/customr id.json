@@ -1,0 +1,109 @@
+{
+  "name": "customr id",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -384,
+        0
+      ],
+      "id": "a958edc1-f255-401e-97b9-08e648f93f79",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "options": {
+          "fileName": "N8n_cudtomerdata."
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        112,
+        0
+      ],
+      "id": "0a873fb6-4c59-4104-a7e5-df0ba1088ca6",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        320,
+        0
+      ],
+      "id": "091a09a8-9870-4317-8275-73e8a2b76a7e",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"customers\": [\n    {\n      \"customerId\": \"CUST-1001\",\n      \"firstName\": \"Kanimozhi\",\n      \"lastName\": \"B\",\n      \"email\": \"kani@gmail.com\",\n      \"ad_spend\": 5000,\n      \"conversions\": 75\n    },\n    {\n      \"customerId\": \"CUST-1002\",\n      \"firstName\": \"Arun\",\n      \"lastName\": \"K\",\n      \"email\": \"arun@gmail.com\",\n      \"ad_spend\": 3000,\n      \"conversions\": 50\n    },\n    {\n      \"customerId\": \"CUST-1003\",\n      \"firstName\": \"Priya\",\n      \"lastName\": \"S\",\n      \"email\": \"priya@gmail.com\",\n      \"ad_spend\": 2000,\n      \"conversions\": 40\n    },\n    {\n      \"customerId\": \"CUST-1004\",\n      \"firstName\": \"Vikram\",\n      \"lastName\": \"R\",\n      \"email\": \"vikram@gmail.com\",\n      \"ad_spend\": 8000,\n      \"conversions\": 120\n    },\n    {\n      \"customerId\": \"CUST-1005\",\n      \"firstName\": \"Sneha\",\n      \"lastName\": \"P\",\n      \"email\": \"sneha@gmail.com\",\n      \"ad_spend\": 1500,\n      \"conversions\": 25\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -176,
+        0
+      ],
+      "id": "5c22276e-3d88-4986-bb93-b94942f24e85",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "612c139c-3537-416c-ba5c-3bf933ee69fa",
+  "meta": {
+    "instanceId": "adaeb5f55d206719b5d69914b17b421d28d6701b9ecb37fe366d98f6940490e9"
+  },
+  "id": "1RB6yDbm07Kpdijy",
+  "tags": []
+}
